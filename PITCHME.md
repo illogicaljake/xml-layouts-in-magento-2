@@ -136,13 +136,13 @@ All new page layouts must be declared!
 
 @[2-4](Inserting a new CSS file into page meta-information)
 @[5-6](Include these layouts)
-@[10-12](Adding a new block inside of a block)
+@[9](Adding a new block inside of a block)
 
 ---
 
 ## Instructions
 
-The individual parts of the layout file that add, remove, modify or move elements.
+The individual parts (tags) of the layout file that add, remove, modify or move elements.
 
 +++
 
