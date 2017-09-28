@@ -1,5 +1,8 @@
 
 # Layouts in Magento 2
+
+
+
 ##### Jake Hamilton, Irish Titan
 ##### jake.hamilton@irishtitan.com
 
@@ -74,7 +77,7 @@ All new page layouts must be declared!
 
 +++
 
-###Example, from M2's `2columns-left.xml`
+#### Example, from M2's `2columns-left.xml`
 
 ```xml
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
@@ -114,7 +117,7 @@ All new page layouts must be declared!
 
 +++
 
-### Example, from M2's `catalog_product_view.xml`
+#### Example, from M2's `catalog_product_view.xml`
 
 ```xml
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
@@ -197,7 +200,7 @@ This file should only contain the changes you want to make, while everything els
 
 ---
 
-## Override layouts
+### Override layouts
 
 If the amount of customizations is large, you can completely override the necessary layout. 
 
@@ -238,7 +241,7 @@ Find the directory of the relevant module, and navigate to the `view/frontend/la
 
 ---
 
-## Why not just modify .phtml files?
+### Why not just modify .phtml files?
 
 - All design updates in a central place
 - Leaner
@@ -248,23 +251,26 @@ Basically, avoid editing .phtml files directly until you absolutely need to.
 
 ---
 
-## When to definitely use layouts
+### When to definitely use layouts
 
 - change the position of a block or container using `<move>`
 - remove a block or container using the remove or display attribute of the `<referenceBlock>`/`<referenceContainer>` instruction
 - reorder blocks and container using the before/afterattributes of the `<referenceBlock>`/`<referenceContainer>` instruction
 - change the HTML tag or CSS class for the existing container using `<referenceContainer>` element
 
-**Again, don't touch a phtml file until you have to!**
-
 ---
 
-##Then what does Magento do with these .xml files?
+### Then what does Magento do with these .xml files?
 
 The Magento application processes layout files in the following order:
 
-- Collects all layout files from modules. The order is determined by the modules order in the module list from app/etc/config.php.
++++
+
+- Collects all layout files from modules. The order is determined by the modules order in the module list from `app/etc/config.php`.
 - Determines the sequence of [inherited themes](http://devdocs.magento.com/guides/v2.1/frontend-dev-guide/themes/theme-inherit.html).
+
++++
+
 - Iterates the sequence of themes from last ancestor to current:
 	- Adds all extending theme layout files to the list.
 	- Replaces overridden layout files in the list.
@@ -272,7 +278,7 @@ The Magento application processes layout files in the following order:
 
 ---
 
-## Other things you can do with layouts
+## What else can I do?
 
 +++
 
@@ -294,7 +300,7 @@ becomes
 
 +++
 
-##Removing useless resources
+## Removing useless resources
 
 `app/design/frontend/<Vendor>/<theme>/Magento_Theme/layout/default_head_blocks.xml`
 
@@ -314,7 +320,7 @@ becomes
 
 +++
 
-##Change a block template to a custom .phtml template
+## Change a block template to a custom .phtml template
 
 ```xml
  <referenceBlock name="page.main.title" template="%Namespace_Module::new_template.phtml%"/>
@@ -328,7 +334,7 @@ Copy
 
 +++
 
-##Utilize existing blocks
+## Utilize existing blocks
 
 ```xml 
   <referenceContainer name="header-wrapper">
@@ -351,9 +357,9 @@ Copy
 
 ---
 
-#Finally,
+# Finally,
 
-##Magento is all about inheritance.
+## Magento is all about inheritance.
 
 - Everything builds on something else.
 - Magento contains 'base' theme and modules.
@@ -362,7 +368,7 @@ Copy
 
 ---
 
-##Further layout research
+## Further layout research
 
 - [Magento's Frontend Developer Guide](http://devdocs.magento.com/guides/v2.2/frontend-dev-guide/bk-frontend-dev-guide.html)
 - [Toptal's blog](https://www.toptal.com/developers/blog/tags/magento2)
