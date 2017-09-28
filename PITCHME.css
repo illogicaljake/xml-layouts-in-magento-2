@@ -6,8 +6,8 @@
     margin-bottom: .05em;
 }
 .reveal .slides section>* {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 0;
+    margin-right: 0;
 }
 .reveal code:not(.hljs) {
   background: #333;
