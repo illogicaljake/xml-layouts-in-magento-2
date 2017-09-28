@@ -9,11 +9,16 @@
     margin-left: 0;
     margin-right: 0;
 }
+.reveal code {
+    font-size: .65em;
+}
+
 .reveal code:not(.hljs) {
   background: #333;
   padding: 3px;
   font-size: .75em;
 }
+
 .reveal img {
     margin-left: 33%;
 }
