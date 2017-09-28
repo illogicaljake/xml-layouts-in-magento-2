@@ -74,7 +74,7 @@ All new page layouts must be declared!
 #### Example, from M2's `2columns-left.xml`
 
 ```xml
-<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+<layout>
     <update handle="1column"/>
     <referenceContainer name="columns">
         <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar sidebar-main" after="main">
@@ -114,15 +114,13 @@ All new page layouts must be declared!
 #### Example, from M2's `catalog_product_view.xml`
 
 ```xml
-<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page layout="1column">
     <head>
         <css src="mage/gallery/gallery.css"/>
     </head>
     <update handle="catalog_product_opengraph" />
     <update handle="page_calendar"/>
     <body>
-        <attribute name="itemtype" value="http://schema.org/Product" />
-        <attribute name="itemscope" value="itemscope"/>
         <referenceBlock name="head.components">
             <block class="Magento\Framework\View\Element\Js\Components" name="checkout_page_head_components" template="Magento_Catalog::js/components.phtml"/>
         </referenceBlock>
@@ -137,6 +135,7 @@ All new page layouts must be declared!
   ```
 
 @[2-4](Inserting a new CSS file into page meta-information)
+@[5-6](Include these layouts)
 @[10-12](Adding a new block inside of a block)
 
 ---
@@ -150,7 +149,9 @@ The individual parts of the layout file that add, remove, modify or move element
 #### Example
 
 ```xml
-  <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare" name="upsell.product.addto.compare"   template="Magento_Catalog::product/list/addto/compare.phtml"/>
+  <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+         name="upsell.product.addto.compare"
+         template="Magento_Catalog::product/list/addto/compare.phtml" />
 ```
 
 +++
@@ -164,7 +165,11 @@ Optional information within an instruction. Typically define the changes being m
 #### Example
 
 ```xml
-  <move element="name.of.an.element" destination="name.of.destination.element" as="new_alias" after="name.of.element.after" before="name.of.element.before"/>
+  <move element="name.of.an.element" 
+        destination="name.of.destination.element" 
+        as="new_alias" 
+        after="name.of.element.after" 
+        before="name.of.element.before"/>
 ```
 
 Notice `element`, `destination`, `as`, `after` and `before` attributes.
@@ -186,11 +191,16 @@ Rather than copy and modify extensive code, you only need to create an extending
 
 +++
 
-To customize the catalog product view at `<Magento_Catalog_module_dir>/view/frontend/layout/catalog_product_view.xml`, make a file with the same name in the same location *in your theme's directory*.
+To customize the catalog product view at 
+`<Magento_Catalog_module_dir>/view/frontend/layout/catalog_product_view.xml`,
+make a file with the same name in the same location 
+*in your theme's directory*.
 
 Example: `<theme_dir>/Magento_Catalog/layout/catalog_product_view.xml`
 
-This file should only contain the changes you want to make, while everything else is inherited from the base layout file.
++++
+
+This file should only contain the changes you want to make, while everything else is inherited from the base layout file that you're extending.
 
 ---
 
@@ -245,7 +255,7 @@ Find the directory of the relevant module, and navigate to the `view/frontend/la
 
 ---
 
-### When to definitely use layouts
+### Real-world examples
 
 - change the position of a block or container using `<move>`
 - remove a block or container using the remove attribute
@@ -261,7 +271,6 @@ The Magento application processes layout files in the following order:
 +++
 
 - Collects all layout files from modules. The order is determined by the modules order in the module list from `app/etc/config.php`.
-
 - Determines the sequence of [inherited themes](http://devdocs.magento.com/guides/v2.1/frontend-dev-guide/themes/theme-inherit.html).
 
 +++
@@ -269,7 +278,6 @@ The Magento application processes layout files in the following order:
 - Iterates the sequence of themes from last ancestor to current:
   - Adds all extending theme layout files to the list.
   - Replaces overridden layout files in the list.
-  
 - Merges all layout files from the list.
 
 ---
@@ -330,26 +338,30 @@ layout/default_head_blocks.xml`
 
 +++
 
-## Utilize existing blocks
+## Utilize existing blocks for new things
 
 ```xml 
   <referenceContainer name="header-wrapper">
       <container name="desktop-links" as="desktop.links" htmlTag="ul" htmlClass="desktop-nav" after="minicart">
+  
         <block class="Magento\Framework\View\Element\Html\Link" name="orderstatus.link">
           <arguments>
             <argument name="label" xsi:type="string" translate="false">Order Status</argument>
             <argument name="path" xsi:type="string" translate="false">sales/guest/form</argument>
           </arguments>
         </block>
+  
         <block class="Magento\Framework\View\Element\Html\Link" name="account.link">
           <arguments>
             <argument name="label" xsi:type="string" translate="false">My Account</argument>
             <argument name="path" xsi:type="string" translate="false">customer/account</argument>
           </arguments>
         </block>
+  
       </container>
   </referenceContainer>
 ```
+
 
 ---
 
