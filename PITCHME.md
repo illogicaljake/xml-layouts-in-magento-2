@@ -36,7 +36,6 @@
 - **Page layout file** = a wireframe of the page
 - **Page configuration file** = the detailed structure
 
-
 ---
 
 ### 1: Page layout files
@@ -232,7 +231,7 @@ This means that the new file that you place in the theme will be used instead of
 
 Find the directory of the relevant module, and navigate to the `view/frontend/layout/...` directory.
 
-[Magento has a pretty guide on how to do that.](http://devdocs.magento.com/guides/v2.2/frontend-dev-guide/themes/debug-theme.html)
+> [Magento has a pretty guide on how to do that.](http://devdocs.magento.com/guides/v2.2/frontend-dev-guide/themes/debug-theme.html)
 
 ---
 
@@ -242,16 +241,16 @@ Find the directory of the relevant module, and navigate to the `view/frontend/la
 - Leaner
 - Update-proof
 
-Basically, avoid editing .phtml files directly until you absolutely need to.
+> Basically, avoid editing .phtml files directly until you absolutely need to.
 
 ---
 
 ### When to definitely use layouts
 
 - change the position of a block or container using `<move>`
-- remove a block or container using the remove or display attribute of the `<referenceBlock>`/`<referenceContainer>` instruction
-- reorder blocks and container using the before/afterattributes of the `<referenceBlock>`/`<referenceContainer>` instruction
-- change the HTML tag or CSS class for the existing container using `<referenceContainer>` element
+- remove a block or container using the remove attribute
+- reorder blocks and container using the before/after attributes
+- change the HTML tag or CSS class for an existing container
 
 ---
 
@@ -262,6 +261,7 @@ The Magento application processes layout files in the following order:
 +++
 
 - Collects all layout files from modules. The order is determined by the modules order in the module list from `app/etc/config.php`.
+
 - Determines the sequence of [inherited themes](http://devdocs.magento.com/guides/v2.1/frontend-dev-guide/themes/theme-inherit.html).
 
 +++
@@ -269,11 +269,12 @@ The Magento application processes layout files in the following order:
 - Iterates the sequence of themes from last ancestor to current:
   - Adds all extending theme layout files to the list.
   - Replaces overridden layout files in the list.
+  
 - Merges all layout files from the list.
 
 ---
 
-## What else can I do?
+## What else can I do with this?
 
 +++
 
@@ -297,7 +298,8 @@ becomes
 
 ## Removing useless resources
 
-`app/design/frontend/<Vendor>/<theme>/Magento_Theme/layout/default_head_blocks.xml`
+`app/design/frontend/<Vendor>/<theme>/Magento_Theme/
+layout/default_head_blocks.xml`
 
 ```xml
    <head>
@@ -318,12 +320,12 @@ becomes
 ## Change a block template to a custom .phtml template
 
 ```xml
- <referenceBlock name="page.main.title" template="%Namespace_Module::new_template.phtml%"/>
+ <referenceBlock name="page.main.title" 
+                 template="%Namespace_Module::new_template.phtml%"/>
 ```
 
-`Namespace_Module`: defines the module the template belongs to. For example, Magento_Catalog.
-
-`new_template.phtml`: the path to the template relatively to the templates directory. It might be `<module_dir>/view/<area>/templates` or `<theme_dir>/<Namespace_Module>/templates`.
+- `Namespace_Module`: defines the module the template belongs to. For example, Magento_Catalog.
+- `new_template.phtml`: the path to the template relatively to the templates directory. It might be `<module_dir>/view/<area>/templates` or `<theme_dir>/<Namespace_Module>/templates`.
 
 
 +++
@@ -351,7 +353,7 @@ becomes
 
 ---
 
-# Finally,
+## Finally,
 
 ## Magento is all about inheritance.
 
