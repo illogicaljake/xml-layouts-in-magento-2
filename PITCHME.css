@@ -12,13 +12,13 @@
     margin-right: 0;
 }
 .reveal code {
-    font-size: .55em;
+    font-size: .65em;
 }
 
 .reveal code:not(.hljs) {
   background: #333;
   padding: 3px;
-  font-size: .65em;
+  font-size: .75em;
 }
 
 .reveal img {
