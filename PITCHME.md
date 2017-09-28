@@ -3,7 +3,7 @@
 ##### Jake Hamilton, Irish Titan
 ##### jake.hamilton@irishtitan.com
 
-----------
+---
 ## XML
 
 - XML stands for eXtensible Markup Language.
@@ -30,7 +30,7 @@
 
 [More examples](https://www.w3schools.com/xml/xml_examples.asp)
 
-----------
+---
 
 
 ## Two layers of layouts
@@ -39,7 +39,7 @@
 - **Page configuration file** = the detailed structure
 
 
-----------
+---
 
 ### Page layout files
 
@@ -94,7 +94,7 @@ All new page layouts must be declared!
 @[2]
 @[3-9]
 
-----------
+---
 
 ### Page Configuration files
 
@@ -142,7 +142,7 @@ All new page layouts must be declared!
 @[2-4](Inserting a new CSS file into page meta-information)
 @[10-12](Adding a new block inside of a block)
 
-----------
+---
 
 ## Instructions
 
@@ -172,7 +172,7 @@ Optional information within an instruction. Typically define the changes being m
 
 Notice `element`, `destination`, `as`, `after` and `before` attributes.
 
-----------
+---
 
 ## Cool, where do I start?
 
@@ -181,7 +181,7 @@ Two ways of working with layouts:
 - **Extend**
 - **Override**
 
-----------
+---
 
 ## Extending layouts
 
@@ -195,7 +195,7 @@ Example: `<theme_dir>/Magento_Catalog/layout/catalog_product_view.xml`
 
 This file should only contain the changes you want to make, while everything else is inherited from the base layout file.
 
-----------
+---
 
 ## Override layouts
 
@@ -228,7 +228,7 @@ This means that the new file that you place in the theme will be used instead of
 ```
 
 
-----------
+---
 
 ## Where are the base files?
 
@@ -236,7 +236,7 @@ Find the directory of the relevant module, and navigate to the `view/frontend/la
 
 [Magento has a pretty guide on how to do that.](http://devdocs.magento.com/guides/v2.2/frontend-dev-guide/themes/debug-theme.html)
 
-----------
+---
 
 ## Why not just modify .phtml files?
 
@@ -246,7 +246,7 @@ Find the directory of the relevant module, and navigate to the `view/frontend/la
 
 Basically, avoid editing .phtml files directly until you absolutely need to.
 
-----------
+---
 
 ## When to definitely use layouts
 
@@ -257,7 +257,7 @@ Basically, avoid editing .phtml files directly until you absolutely need to.
 
 **Again, don't touch a phtml file until you have to!**
 
-----------
+---
 
 ##Then what does Magento do with these .xml files?
 
@@ -270,7 +270,7 @@ The Magento application processes layout files in the following order:
 	- Replaces overridden layout files in the list.
 - Merges all layout files from the list.
 
-----------
+---
 
 ## Other things you can do with layouts
 
@@ -349,7 +349,7 @@ Copy
   </referenceContainer>
 ```
 
-----------
+---
 
 #Finally,
 
@@ -360,7 +360,7 @@ Copy
 - Magento has a *lot* of things to re-use.
 
 
-----------
+---
 
 ##Further layout research
 
@@ -368,6 +368,6 @@ Copy
 - [Toptal's blog](https://www.toptal.com/developers/blog/tags/magento2)
 - Nothing beats tinkering.
 
-----------
+---
 
 ![Any questions?](https://media.giphy.com/media/3o6Ztmhk7M5bU9p3kk/giphy.gif)
