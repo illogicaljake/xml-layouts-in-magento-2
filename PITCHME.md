@@ -1,19 +1,15 @@
 
 # Layouts in Magento 2
 
-
-
-##### Jake Hamilton, Irish Titan
-##### jake.hamilton@irishtitan.com
-
 ---
+
 ## XML
+
+*Magento layouts are built with XML*
 
 - XML stands for eXtensible Markup Language.
 - XML was designed to store and transport data.
 - XML was designed to be both human- and machine-readable.
-
-- *Magento layouts are built with XML*
 
 +++
 
@@ -28,13 +24,12 @@
   <body>Don't forget me this weekend!</body>
 </note>
 ```
-@[1]
-@[2-7]
+@[1](Declare the file type)
+@[2-7](Include the data)
 
 [More examples](https://www.w3schools.com/xml/xml_examples.asp)
 
 ---
-
 
 ## Two layers of layouts
 
@@ -44,13 +39,13 @@
 
 ---
 
-### Page layout files
+### 1: Page layout files
 
 - May be found in both modules and themes
 - Most just use Magento's layouts: `2columns-left.xml`, `2columns-right.xml`, `1column.xml`, etc
 
 Found here:
-`<module_dir>/view/frontend/page_layout`
+`<module_dir>/view/frontend/page_layout` *or*
 `<theme_dir>/<Namespace>_<Module>/page_layout`
 
 +++
@@ -93,13 +88,13 @@ All new page layouts must be declared!
 </layout>
 ```
 
-@[1,10]
+@[1,11]
 @[2]
-@[3-9]
+@[3-10]
 
 ---
 
-### Page Configuration files
+### 2: Page Configuration files
 
 - Found in both modules and themes.
 - Adds content to the page layout. 
@@ -186,7 +181,7 @@ Two ways of working with layouts:
 
 ---
 
-## Extending layouts
+## 1. Extend layouts
 
 Rather than copy and modify extensive code, you only need to create an extending layout file that contains the changes you want.
 
@@ -200,7 +195,7 @@ This file should only contain the changes you want to make, while everything els
 
 ---
 
-### Override layouts
+### 2. Override layouts
 
 If the amount of customizations is large, you can completely override the necessary layout. 
 
@@ -272,8 +267,8 @@ The Magento application processes layout files in the following order:
 +++
 
 - Iterates the sequence of themes from last ancestor to current:
-	- Adds all extending theme layout files to the list.
-	- Replaces overridden layout files in the list.
+  - Adds all extending theme layout files to the list.
+  - Replaces overridden layout files in the list.
 - Merges all layout files from the list.
 
 ---
@@ -310,8 +305,8 @@ becomes
         <remove src="css/styles-m.css" />
         <remove src="my-js.js"/>
         <remove src="Magento_Catalog::js/compare.js" />
-								
-	<!-- Remove external resources -->
+                
+  <!-- Remove external resources -->
         <remove src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
         <remove src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"/>
         <remove src="http://fonts.googleapis.com/css?family=Montserrat" /> 
@@ -324,7 +319,6 @@ becomes
 
 ```xml
  <referenceBlock name="page.main.title" template="%Namespace_Module::new_template.phtml%"/>
-Copy
 ```
 
 `Namespace_Module`: defines the module the template belongs to. For example, Magento_Catalog.
